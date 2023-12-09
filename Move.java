@@ -1,18 +1,18 @@
-//student Name: Rasik Silwal
-//student ID: 886043
-
 import java.util.ArrayList;
 import java.util.List;
 
 class Move {
     private final List<Box> boxes;
+
     public Move(int initialCapacity) {
         boxes = new ArrayList<>(initialCapacity);
     }
+
     // method to add box to the move
     public void addBox(Box box) {
         boxes.add(box);
     }
+
     // method to print the contents of the move
     public void print() {
         System.out.println("The objects of my move are:");
@@ -32,13 +32,16 @@ class Move {
         return -1;
     }
 }
+
 class Box {
     private final List<Object> items;
     private final int boxNumber;
+
     // constructor for creating a box capacity and box number
     public Box(int capacity, int boxNumber) {
         items = new ArrayList<>(capacity);
-        this.boxNumber = boxNumber;    }
+        this.boxNumber = boxNumber;
+    }
 
     // adding an item
     public void addItem(Object item) {
