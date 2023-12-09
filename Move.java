@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Move {
     private final List<Box> boxes;
 
@@ -18,15 +21,7 @@ class Move {
         }
     }
 
-    // method to print the contents of the move
-    public void print() {
-        System.out.println("The objects of my move are:");
-        for (Box box : boxes) {
-            box.print();
-        }
-    }
-
-    // method to find box number where an object with name is given
+    // method to find box number where an object with a given name is
     public int find(String itemName) {
         for (int i = boxes.size() - 1; i >= 0; i--) {
             int boxNumber = boxes.get(i).find(itemName);
@@ -36,65 +31,64 @@ class Move {
         }
         return -1;
     }
-    class Box{
+}
 
-        private final List<Object> items;
-        private final int boxNumber;
+class Box {
+    private final List<Object> items;
+    private final int boxNumber;
 
-        // constructor for creating a box capacity and box number
-        public Box(int capacity, int boxNumber) {
-            items = new ArrayList<>(capacity);
-            this.boxNumber = boxNumber;
-        }
-
-        // adding an item
-        public void addItem(Object item) {
-            items.add(item);
-        }
-
-        // printing the contents of the box
-        public void print() {
-            for (Object item : items) {
-                if (item instanceof SingleObject) {
-                    System.out.println(((SingleObject) item).getName());
-                } else if (item instanceof Box) {
-                    ((Box) item).print();
-                }
-            }
-        }
-
-        //finding box number with a given name of the item
-        public int find(String itemName) {
-            for (Object item : items) {
-                if (item instanceof SingleObject && ((SingleObject) item).getName().equals(itemName)) {
-                    return boxNumber;
-                } else if (item instanceof Box) {
-                    int result = ((Box) item).find(itemName);
-                    if (result > 0) {
-                        return result;
-                    }
-                }
-            }
-            return -1;
-        }
-
-
+    // constructor for creating a box capacity and box number
+    public Box(int capacity, int boxNumber) {
+        items = new ArrayList<>(capacity);
+        this.boxNumber = boxNumber;
     }
-    class SingleObject {
-        private final String name;
 
-        // constructr creating a single object with a specified name
-        public SingleObject(String name) {
-            this.name = name;
+    // adding an item
+    public void addItem(Object item) {
+        items.add(item);
+    }
+
+    // printing the contents of the box
+    public void print() {
+        for (Object item : items) {
+            if (item instanceof SingleObject) {
+                System.out.println(((SingleObject) item).getName());
+            } else if (item instanceof Box) {
+                ((Box) item).print();
+            }
         }
+    }
 
-        // getting the name of single object
-        public String getName() {
-            return name;
+    //finding box number with a given name of the item
+    public int find(String itemName) {
+        for (Object item : items) {
+            if (item instanceof SingleObject && ((SingleObject) item).getName().equals(itemName)) {
+                return boxNumber;
+            } else if (item instanceof Box) {
+                int result = ((Box) item).find(itemName);
+                if (result > 0) {
+                    return result;
+                }
+            }
         }
+        return -1;
+    }
+}
 
+class SingleObject {
+    private final String name;
 
-        // Main method to demonstrate the usage of the Move, Box, and SingleObject classes
+    // constructr creating a single object with a specified name
+    public SingleObject(String name) {
+        this.name = name;
+    }
+
+    // getting the name of single object
+    public String getName() {
+        return name;
+    }
+
+    // Main method to demonstrate the usage of the Move, Box, and SingleObject classes
     public static void main(String[] args) {
         // We create a move that will hold 2 main boxes
         Move move = new Move(2);
