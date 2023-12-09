@@ -47,6 +47,37 @@ class Move {
             this.boxNumber = boxNumber;
         }
 
+        // adding an item
+        public void addItem(Object item) {
+            items.add(item);
+        }
+
+        // printing the contents of the box
+        public void print() {
+            for (Object item : items) {
+                if (item instanceof SingleObject) {
+                    System.out.println(((SingleObject) item).getName());
+                } else if (item instanceof Box) {
+                    ((Box) item).print();
+                }
+            }
+        }
+
+        //finding box number with a given name of the item
+        public int find(String itemName) {
+            for (Object item : items) {
+                if (item instanceof SingleObject && ((SingleObject) item).getName().equals(itemName)) {
+                    return boxNumber;
+                } else if (item instanceof Box) {
+                    int result = ((Box) item).find(itemName);
+                    if (result > 0) {
+                        return result;
+                    }
+                }
+            }
+            return -1;
+        }
+
     }
 
     // Main method to demonstrate the usage of the Move, Box, and SingleObject classes
