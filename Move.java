@@ -78,9 +78,23 @@ class Move {
             return -1;
         }
 
-    }
 
-    // Main method to demonstrate the usage of the Move, Box, and SingleObject classes
+    }
+    class SingleObject {
+        private final String name;
+
+        // constructr creating a single object with a specified name
+        public SingleObject(String name) {
+            this.name = name;
+        }
+
+        // getting the name of single object
+        public String getName() {
+            return name;
+        }
+
+
+        // Main method to demonstrate the usage of the Move, Box, and SingleObject classes
     public static void main(String[] args) {
         // We create a move that will hold 2 main boxes
         Move move = new Move(2);
