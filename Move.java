@@ -26,7 +26,7 @@ class Move {
         }
     }
 
-    // method to find box number where an object with a given name is
+    // method to find box number where an object with name is given
     public int find(String itemName) {
         for (int i = boxes.size() - 1; i >= 0; i--) {
             int boxNumber = boxes.get(i).find(itemName);
@@ -35,6 +35,9 @@ class Move {
             }
         }
         return -1;
+    }
+    class Box{
+
     }
 
     // Main method to demonstrate the usage of the Move, Box, and SingleObject classes
