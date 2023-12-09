@@ -38,6 +38,15 @@ class Move {
     }
     class Box{
 
+        private final List<Object> items;
+        private final int boxNumber;
+
+        // constructor for creating a box capacity and box number
+        public Box(int capacity, int boxNumber) {
+            items = new ArrayList<>(capacity);
+            this.boxNumber = boxNumber;
+        }
+
     }
 
     // Main method to demonstrate the usage of the Move, Box, and SingleObject classes
